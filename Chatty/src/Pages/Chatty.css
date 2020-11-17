@@ -1,0 +1,16 @@
+.Chatty {
+    display: block;
+    margin: 0 0;
+    align-items: center;
+    text-align: center;
+}
+
+.Chatty p {
+    color: white;
+    margin-top: 1em;
+}
+
+.Chatty header {
+    color: white;
+    margin-top: 2em;
+}

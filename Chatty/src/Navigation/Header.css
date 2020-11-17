@@ -1,0 +1,52 @@
+.Header {
+    box-sizing: border-box;
+    width: 100%;
+    display: inline-flex;
+    padding: .5em;
+    margin-bottom: 0em;
+    background-color: #55555e;
+    color: #797982;
+    font-size: 22px;
+    font-weight: bold;
+    padding-bottom: 13px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    left: 0;
+    justify-content: left;
+    height: 50px;
+}
+
+.Header img {
+    float: left;
+    width: 45px;
+    margin-top: 5px;
+    left: 0;
+}
+
+.main-navigation__menu-btn {
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+  
+.main-navigation__menu-btn span {
+    display: block;
+    width: 2rem;
+    height: 2px;
+    background: white;
+}
+
+.Title {
+    color: black;
+    justify-content: center;
+    margin-top: .1em;
+}
+
+.Title:hover {
+    color: black;
+}

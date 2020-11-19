@@ -23,6 +23,9 @@
     .Container {
         width: 65%;
     }
+    .Form {
+        margin-right: 10px;
+    }
 }
 
 .textA {
@@ -91,7 +94,7 @@
 
 .Entry form {
     width: 80%;
-    margin-left: 20em;
+    margin-left: 24vw;
 }
 
 .Entry input {

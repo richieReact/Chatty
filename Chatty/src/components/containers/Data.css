@@ -1,9 +1,9 @@
 .Page {
     display: flex;
-    height: 100vh;
-    width: 100%;
-    align-items: center;
+    height: 80vh;
+    width: 70%;
     flex-direction: column;
+    margin-right: 1em;
 }
 
 .Container {
@@ -12,15 +12,16 @@
     height: 80%;
     overflow: auto;
     width: 50%;
-    border: 1px solid lightgrey;
+    border: transparent;
     border-radius: 10px;
     padding-bottom: 10px;
     margin-top: 10px;
+    margin-left: 100vh;
 }
 
 @media screen and (max-width: 500px) {
     .Container {
-        width: 91%;
+        width: 65%;
     }
 }
 
@@ -46,12 +47,12 @@
 
 .Button {
     background-color: pink;
-    width: 100%;
+    width: 13%;
     border: none;
-    height: 50px;
+    height: 20px;
     border-radius: 10px;
     color: #46516e;
-    font-size: 17px;
+    font-size: 13px;
 }
 
 .MyRow {
@@ -82,4 +83,37 @@
     text-align: center;
     border-top-left-radius: 10%;
     border-bottom-left-radius: 10%;
+}
+
+.Entry {
+    width: 100%;
+}
+
+.Entry form {
+    width: 80%;
+    margin-left: 20em;
+}
+
+.Entry input {
+    width: 80%;
+    height: auto;
+    cursor: auto;
+    padding: 2em;
+    font-size: 1rem;
+    border: 0;
+    border-radius: 10px;
+    caret-color: #00379f;
+    margin-left: 10px;
+}
+
+.Entry button {
+    width: 10%;
+    padding: 0.5em;
+    font-size: 1em;
+    color: #00379f;
+    background: white;
+    border-radius: 4em;
+    border: 2px solid #00379f;
+    text-transform: uppercase;
+    transition: color 0.5s ease, background 0.5s ease;
 }

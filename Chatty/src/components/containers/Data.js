@@ -44,6 +44,7 @@ const Data = props => {
 
     return (
     //Send down the info, render the chat shit
+        <React.Fragment>
             <div className="Page">
                 <div className="Container">
                     {messages.map((message, index) => {
@@ -65,13 +66,18 @@ const Data = props => {
                         )
                     })}
                 </div>
+            </div>
+            <span className="Entry">
                 <form onSubmit={sendMessage}>
-                    <input style={{ width: '100%' }} value={message} onChange={handleChange} placeholder="Say something..." />
+                    <input 
+                    value={message} 
+                    onChange={handleChange} placeholder="Say something..." />
                     <button className="Button">
                         Submit
                     </button>
                 </form>
-            </div>
+            </span>
+        </React.Fragment>
     )
 }
 

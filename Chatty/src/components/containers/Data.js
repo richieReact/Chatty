@@ -79,6 +79,6 @@ const Data = props => {
             </span>
         </React.Fragment>
     )
-}
+}  
 
 export default Data;

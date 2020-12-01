@@ -10,13 +10,14 @@ const mongoPractice = require('./mongoose');
 app.use(bodyParser.json());
 
 app.post('/messages', mongoPractice.saveMsg);
+app.post('/messages', )
 
 app.get('/messages', mongoPractice.getMessages);
 
 io.on("connection", socket => {
-    socket.emit("your id", socket.id);
-    socket.on("send message", body => {
-        io.emit("message", body)
+    socket.emit('your id', socket.id);
+    socket.on('send message', body => {
+        io.emit('message', body)
     })
     console.log("connected")
 })

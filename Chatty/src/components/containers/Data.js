@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
+import SaveMsg, { saveMsg } from '../../../../Server/mongoose';
 
 import './Data.css';
 
@@ -27,7 +28,7 @@ const Data = props => {
     function recievedMessage(message) {
         setMessages(oldMsgs => [...oldMsgs, message]);
     }
-
+    // Find a way to have this fuction emit the message to the database, and possibly broadcast it to the whole room.
     function sendMessage(e) {
         e.preventDefault();
         const messageObject = {
@@ -36,6 +37,7 @@ const Data = props => {
         };
         setMessage("")
         socketRef.current.emit("send message", messageObject);
+        saveMsg(messageObject);
     }
 
     function handleChange(e) {

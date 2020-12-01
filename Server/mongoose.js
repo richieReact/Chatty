@@ -15,10 +15,11 @@ mongoose.connect(
 
 const saveMsg = async (req, res, next) => {
   const savedMessage = new Message({
-    message: req.body
+    message: req.message.body
   })
+  console.log(savedMessage)
   const result = await savedMessage.save();
-
+  console.log(typeof savedMessage._id)
   res.json(result);
 };
 

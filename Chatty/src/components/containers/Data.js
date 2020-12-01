@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
-import SaveMsg, { saveMsg } from '../../../../Server/mongoose';
+// import SaveMsg, { saveMsg } from '../../../Server/mongoose';
 
 import './Data.css';
 
@@ -37,7 +37,7 @@ const Data = props => {
         };
         setMessage("")
         socketRef.current.emit("send message", messageObject);
-        saveMsg(messageObject);
+        // SaveMsg(messageObject);
     }
 
     function handleChange(e) {

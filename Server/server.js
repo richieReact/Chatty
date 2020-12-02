@@ -23,10 +23,10 @@ io.on("connection", socket => {
     console.log("connected")
 })
 
-io.on('send message', body => {
-    const datam = req.body;
-    mongoPractice.saveMsg(datam)
-    console.log('Message saved to collection?')
-})
+// io.on('send message', body => {
+//     const datam = req.body;
+//     mongoPractice.saveMsg(datam)
+//     console.log('Message saved to collection?')
+// })
 
 server.listen(8000, () => console.log("server is running on port 8000"));

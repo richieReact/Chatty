@@ -37,6 +37,7 @@ const Data = props => {
         };
         setMessage("")
         socketRef.current.emit("send message", messageObject);
+        // Can't do this since it's outside of the src folder...
         // SaveMsg(messageObject);
     }
 

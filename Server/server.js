@@ -7,8 +7,12 @@ const io = socket(server);
 const bodyParser = require('body-parser');
 const mongoPractice = require('./mongoose');
 // const message = require("../src/backend/Server/models/message");
+const messagesRoutes = require('./routes/messages-routes');
+const mongoose = require('mongoose');
 
 app.use(bodyParser.json());
+
+app.use('/api/messages', messagesRoutes);
 
 app.post('/messages', mongoPractice.saveMsg);
 app.post('/messages', )

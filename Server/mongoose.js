@@ -13,10 +13,11 @@ mongoose.connect(
   console.log('Connection failed oh noooooo!')
 });
 
+
 // This needs to work with socket.io messages
 const saveMsg = async (req, res, next) => {
   const savedMessage = new Message({
-    message: req.message.body
+    message: req.body.message
   })
   console.log(savedMessage)
   const result = await savedMessage.save();
@@ -28,6 +29,7 @@ const getMessages = async (req, res, next) => {
   const messages = await Message.find()
   res.json(messages);
 }
+
 
 exports.saveMsg = saveMsg;
 exports.getMessages = getMessages;

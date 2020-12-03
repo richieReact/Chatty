@@ -26,7 +26,7 @@ mongoose.connect(
 app.use(bodyParser.json());
 
 // GET messages
-app.get('/api/message', (req, res) => {
+app.get('/api/messages', (req, res) => {
     Message.find({}).exec((err, messages) => {
         if(err) {
             res.send(err).status(500);

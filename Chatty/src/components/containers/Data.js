@@ -37,22 +37,15 @@ const Data = props => {
         };
         setMessage("")
         socketRef.current.emit("send message", messageObject);
-        // Can't do this since it's outside of the src folder...
-        // SaveMsg(messageObject);
-
-        let reqBody = {
-            content: message
-        }
 
         fetch("/api/messages", {
             method: "POST",
-            // headers: {
-            //     "Content-Type": "application/json"
-            // },
-            body: JSON.stringify(reqBody)
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(messageObject)
         }).then((res) => {
             return res.json();
-            console.log(message);
         }).catch((err) => {
             console.log(err);
         });

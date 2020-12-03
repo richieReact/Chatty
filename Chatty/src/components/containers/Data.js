@@ -6,7 +6,6 @@ import './Data.css';
 
 const Data = props => {
 
-    //Database Stuff here
     const [yourID, setYourID] = useState();
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState([]);
@@ -30,7 +29,7 @@ const Data = props => {
     }
     
     // Find a way to have this fuction emit the message to the database, and possibly broadcast it to the whole room.
-    function sendMessage(e) {
+    function sendMessage(e, content) {
         e.preventDefault();
         const messageObject = {
             body: message,
@@ -40,8 +39,25 @@ const Data = props => {
         socketRef.current.emit("send message", messageObject);
         // Can't do this since it's outside of the src folder...
         // SaveMsg(messageObject);
-    }
 
+        let reqBody = {
+            content: message
+        }
+
+        fetch("/api/messages", {
+            method: "POST",
+            // headers: {
+            //     "Content-Type": "application/json"
+            // },
+            body: JSON.stringify(reqBody)
+        }).then((res) => {
+            return res.json();
+            console.log(message);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
+    
     function handleChange(e) {
         setMessage(e.target.value);
     }

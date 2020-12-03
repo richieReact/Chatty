@@ -2,16 +2,7 @@ const mongoose = require('mongoose');
 
 const Message = require('./models/message');
 
-mongoose.connect(
-  'mongodb+srv://RichardChannell:Montecristo69@cluster0.kt5oq.mongodb.net/Chatty?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => {
-  console.log('Connected to the database!')
-}).catch(() => {
-  console.log('Connection failed oh noooooo!')
-});
+
 
 
 // This needs to work with socket.io messages

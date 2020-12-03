@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 
 import './Data.css';
 
-const Data = props => {
+const Data = () => {
 
     const [yourID, setYourID] = useState();
     const [messages, setMessages] = useState([]);

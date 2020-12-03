@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 
-
 import './Data.css';
 
 const Data = () => {
@@ -28,7 +27,6 @@ const Data = () => {
         setMessages(oldMsgs => [...oldMsgs, message]);
     }
     
-    // Find a way to have this fuction emit the message to the database, and possibly broadcast it to the whole room.
     function sendMessage(e, content) {
         e.preventDefault();
         const messageObject = {

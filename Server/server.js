@@ -5,9 +5,7 @@ const server = http.createServer(app);
 const socket = require("socket.io");
 const io = socket(server);
 const bodyParser = require('body-parser');
-const mongoPractice = require('./mongoose');
 const Message = require("./models/message");
-const messagesRoutes = require('./routes/messages-routes');
 const mongoose = require('mongoose');
 
 // MongoDB connection
@@ -45,11 +43,6 @@ app.post('/api/messages', (req, res) => {
         res.send(err).status(500);
     });
 });
-
-// app.use('/api/messages', messagesRoutes);
-// app.post('/messages', mongoPractice.saveMsg);
-// app.post('/messages', )
-// app.get('/messages', mongoPractice.getMessages);
 
 // Socket.io connection
 io.on("connection", socket => {

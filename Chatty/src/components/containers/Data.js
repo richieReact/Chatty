@@ -16,14 +16,14 @@ const Data = () => {
        
     // Sets your ID on connection
     socketRef.current.on("your id", id => {
-           setYourID(id);
+      setYourID(id);
     })
     console.log("socket connection worked")
     socketRef.current.on("message", (message) => {
     recievedMessage(message);
     })
     // put the GET request here
-}, []);
+  }, []);
 
   function recievedMessage(message) {
     setMessages(oldMsgs => [...oldMsgs, message]);

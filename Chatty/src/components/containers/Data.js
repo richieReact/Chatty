@@ -5,61 +5,64 @@ import './Data.css';
 
 const Data = () => {
 
-    const [yourID, setYourID] = useState();
-    const [messages, setMessages] = useState([]);
-    const [message, setMessage] = useState([]);
+  const [yourID, setYourID] = useState();
+  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState([]);
 
-    const socketRef = useRef();
+  const socketRef = useRef();
 
-    useEffect(() => {
-       socketRef.current = io.connect('/');
+  useEffect(() => {
+    socketRef.current = io.connect('/');
        
-       socketRef.current.on("your id", id => {
+    // Sets your ID on connection
+    socketRef.current.on("your id", id => {
            setYourID(id);
-       })
-       console.log("socket connection worked")
-       socketRef.current.on("message", (message) => {
-        recievedMessage(message);
-       })
-    }, []);
+    })
+    console.log("socket connection worked")
+    socketRef.current.on("message", (message) => {
+    recievedMessage(message);
+    })
+    // put the GET request here
+}, []);
 
-    function recievedMessage(message) {
-        setMessages(oldMsgs => [...oldMsgs, message]);
-    }
+  function recievedMessage(message) {
+    setMessages(oldMsgs => [...oldMsgs, message]);
+}
     
-    function sendMessage(e, content) {
-        e.preventDefault();
-        const messageObject = {
-            body: message,
-            id: yourID,
-        };
-        setMessage("")
-        socketRef.current.emit("send message", messageObject);
+  function sendMessage(e, content) {
+    e.preventDefault();
+    const messageObject = {
+        body: message,
+        id: yourID,
+    };
+    setMessage("")
+    socketRef.current.emit("send message", messageObject);
 
-        fetch("/api/messages", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(messageObject)
-        }).then((res) => {
-            return res.json();
-        }).catch((err) => {
-            console.log(err);
-        });
-    }
+    // this took so much for me to find. I big win for me.
+    fetch("/api/messages", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(messageObject)
+    }).then((res) => {
+        return res.json();
+    }).catch((err) => {
+        console.log(err);
+    });
+  }
     
-    function handleChange(e) {
-        setMessage(e.target.value);
-    }
+  function handleChange(e) {
+    setMessage(e.target.value);
+  }
 
-    return (
+  return (
     //Send down the info, render the chat shit
-        <React.Fragment>
-            <div className="Page">
-                <div className="Container">
-                    {messages.map((message, index) => {
-                        if (message.id === yourID) {
+    <React.Fragment>
+      <div className="Page">
+        <div className="Container">
+                {messages.map((message, index) => {
+                      if (message.id === yourID) {
                             return (
                                 <div className="MyRow" key={index}>
                                     <div className="MyMessage" >

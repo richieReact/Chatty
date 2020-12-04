@@ -59,23 +59,23 @@ const Data = () => {
   return (
     //Send down the info, render the chat shit
     <React.Fragment>
-      <div className="Page">
-        <div className="Container">
-                {messages.map((message, index) => {
-                      if (message.id === yourID) {
-                            return (
-                                <div className="MyRow" key={index}>
-                                    <div className="MyMessage" >
-                                        {message.body}
-                                    </div>
-                                </div>
-                            )
-                        }
-                        return (
-                            <div key={index} style={{ justifyContent: 'flex-start' }} >
-                                <div className="PartnerMessage" >
-                                    {message.body}
-                                </div>
+    <div className="Page">
+      <div className="Container">
+        {messages.map((message, index) => {
+          if (message.id === yourID) {
+            return (
+              <div className="MyRow" key={index}>
+                <div className="MyMessage" >
+                  {message.body}
+                </div>
+              </div>
+            )
+          }
+              return (
+              <div key={index} style={{ justifyContent: 'flex-start' }} >
+                <div className="PartnerMessage" >
+                      {message.body}
+                          </div>
                             </div>
                         )
                     })}

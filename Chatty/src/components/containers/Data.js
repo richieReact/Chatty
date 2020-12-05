@@ -28,8 +28,8 @@ const Data = () => {
       method: "GET",
     }).then((res) => {
       return res.json();
-    }).then((resJson) => {
-      console.log(resJson)
+    }).then((resJSON) => {
+      console.log(resJSON);
     }).catch((err) => {
       console.log(err);
     });

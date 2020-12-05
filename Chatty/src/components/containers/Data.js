@@ -22,12 +22,12 @@ const Data = () => {
     socketRef.current.on("message", (message) => {
     recievedMessage(message);
     })
-    // put the GET request here
+    // put the GET request here, use it to setMessages with the old messagesand it should display
   }, []);
 
   function recievedMessage(message) {
     setMessages(oldMsgs => [...oldMsgs, message]);
-}
+    }
     
   function sendMessage(e, content) {
     e.preventDefault();

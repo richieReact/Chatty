@@ -8,12 +8,12 @@ const Data = () => {
   const [yourID, setYourID] = useState();
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState([]);
+  const [username, setUsername] = useState([]);
 
   const socketRef = useRef();
 
   useEffect(() => {
-    socketRef.current = io.connect('/');
-       
+    socketRef.current = io.connect('/');   
     // Sets your ID on connection
     socketRef.current.on("your id", id => {
       setYourID(id);
@@ -22,18 +22,29 @@ const Data = () => {
     socketRef.current.on("message", (message) => {
     recievedMessage(message);
     })
-    // put the GET request here, use it to setMessages with the old messagesand it should display
+
+    // Getting the json successfully but gotta find out how to display it (the body and the username). 
+    fetch("/api/messages", {
+      method: "GET",
+    }).then((res) => {
+      return res.json();
+    }).then((resJson) => {
+      console.log(resJson)
+    }).catch((err) => {
+      console.log(err);
+    });
   }, []);
 
   function recievedMessage(message) {
     setMessages(oldMsgs => [...oldMsgs, message]);
     }
     
-  function sendMessage(e, content) {
+  function sendMessage(e) {
     e.preventDefault();
     const messageObject = {
         body: message,
-        id: yourID,
+        username: username,
+        id: yourID
     };
     setMessage("")
     socketRef.current.emit("send message", messageObject);
@@ -56,6 +67,10 @@ const Data = () => {
     setMessage(e.target.value);
   }
 
+  function handleChangeUsername(e) {
+    setUsername(e.target.value);
+  }
+
   return (
     //Send down the info, render the chat shit
     <React.Fragment>
@@ -71,12 +86,12 @@ const Data = () => {
               </div>
             )
           }
-              return (
+            return (
               <div key={index} style={{ justifyContent: 'flex-start' }} >
                 <div className="PartnerMessage" >
-                      {message.body}
-                          </div>
-                            </div>
+                  {message.body}
+                </div>
+              </div>
                         )
                     })}
                 </div>
@@ -90,6 +105,14 @@ const Data = () => {
                         Submit
                     </button>
                 </form>
+            </span>
+            <span>
+              <form>
+              <input
+                    value={username}
+                    onChange={handleChangeUsername}
+                    placeholder="Your name" />
+              </form>
             </span>
         </React.Fragment>
     )

@@ -34,17 +34,18 @@ const Data = () => {
     });
   }, []);
 
-  function recievedMessage(message) {
-    setMessages(oldMsgs => [...oldMsgs, message]);
+    function recievedMessage(message) {
+      setMessages(oldMsgs => [...oldMsgs, message]);
     }
-    
-  function sendMessage(e) {
-    e.preventDefault();
-    const messageObject = {
-        body: message,
-        username: username,
-        id: yourID
+      
+    function sendMessage(e) {
+      e.preventDefault();
+      const messageObject = {
+          body: message,
+          username: username,
+          id: yourID
     };
+
     setMessage("")
     socketRef.current.emit("send message", messageObject);
 

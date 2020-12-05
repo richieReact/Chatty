@@ -22,7 +22,6 @@ const Data = () => {
     socketRef.current.on("message", (message) => {
     recievedMessage(message);
     })
-
     // Getting the json successfully but gotta find out how to display it (the body and the username). 
     fetch("/api/messages", {
       method: "GET",

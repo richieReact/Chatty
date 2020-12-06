@@ -45,23 +45,21 @@ const Data = () => {
           username: username,
           id: yourID
     };
-
-    setMessage("")
-    socketRef.current.emit("send message", messageObject);
-
-    // this took so much for me to find. I big win for me.
-    fetch("/api/messages", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(messageObject)
-    }).then((res) => {
-        return res.json();
-    }).catch((err) => {
-        console.log(err);
-    });
-  }
+      setMessage("")
+      socketRef.current.emit("send message", messageObject);
+      // this took so much for me to find. I big win for me.
+      fetch("/api/messages", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(messageObject)
+      }).then((res) => {
+          return res.json();
+      }).catch((err) => {
+          console.log(err);
+      });
+    }
     
   function handleChange(e) {
     setMessage(e.target.value);

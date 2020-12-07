@@ -84,16 +84,17 @@ const Data = () => {
               </div>
             )
           }
-            return (
-              <div key={index} style={{ justifyContent: 'flex-start' }} >
-                <div className="PartnerMessage" >
-                  {message.body}
-                </div>
+          return (
+            <div key={index} style={{ justifyContent: 'flex-start' }} >
+              <div className="PartnerMessage" >
+                {messages.body}
               </div>
-                        )
-                    })}
-                </div>
             </div>
+            )
+          })}
+        </div>
+      </div>
+
             <span className="Entry">
                 <form onSubmit={sendMessage}>
                     <input 

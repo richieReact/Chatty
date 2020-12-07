@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './Welcome.css';
+import './welcome.css';
 
 const Welcome = () => {
     return (

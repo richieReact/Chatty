@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import './App.css';
-import Welcome from './Pages/Welcome';
+import Welcome from './Pages/welcome';
 import Register from './Pages/Register';
-import Header from './Navigation/Header';
+import Header from './Navigation/header';
 import Data from './components/containers/Data';
 
 const App = () => {

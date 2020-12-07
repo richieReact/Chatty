@@ -28,7 +28,9 @@ const Data = () => {
     }).then((res) => {
       return res.json();
     }).then((resJSON) => {
-      console.log(resJSON);
+      console.log(resJSON)
+      setMessages(resJSON.concat())
+      console.log({message})
     }).catch((err) => {
       console.log(err);
     });
@@ -87,7 +89,7 @@ const Data = () => {
           return (
             <div key={index} style={{ justifyContent: 'flex-start' }} >
               <div className="PartnerMessage" >
-                {messages.body}
+                {message.body}
               </div>
             </div>
             )

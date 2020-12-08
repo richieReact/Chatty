@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
-import { animateScroll } from 'react-scroll';
 
 import './Data.css';
 
@@ -23,14 +22,12 @@ const Data = () => {
     socketRef.current.on("message", (message) => {
     recievedMessage(message);
     })
-    // Getting the json successfully but gotta find out how to display it (the body and the username). 
     fetch("/api/messages", {
       method: "GET",
     }).then((res) => {
       return res.json();
     }).then((resJSON) => {
       console.log(resJSON)
-      setMessages(resJSON.concat())
       console.log({messages})
       scrollToBottom()
     }).catch((err) => {
@@ -63,11 +60,6 @@ const Data = () => {
       }).catch((err) => {
           console.log(err);
       });
-    }
-    
-    function scrollToBottom() {
-      const chatWindow = document.getElementById("DbMsgs");
-      chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 
     function handleChange(e) {

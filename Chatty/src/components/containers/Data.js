@@ -31,7 +31,7 @@ const Data = () => {
     }).then((resJSON) => {
       console.log(resJSON)
       setMessages(resJSON.concat())
-      console.log({message})
+      console.log({messages})
       scrollToBottom()
     }).catch((err) => {
       console.log(err);
@@ -95,7 +95,7 @@ const Data = () => {
           }
           return (
             <div key={index} style={{ justifyContent: 'flex-start' }} >
-              <div className="PartnerMessage" id='DbMsgs'>
+              <div className="PartnerMessage" id="DbMsgs">
                 {message.username}:  {message.body}
               </div>
             </div>

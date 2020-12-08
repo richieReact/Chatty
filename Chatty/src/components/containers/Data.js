@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
+import { animateScroll } from 'react-scroll';
 
 import './Data.css';
 
@@ -31,6 +32,7 @@ const Data = () => {
       console.log(resJSON)
       setMessages(resJSON.concat())
       console.log({message})
+      scrollToBottom()
     }).catch((err) => {
       console.log(err);
     });
@@ -63,13 +65,18 @@ const Data = () => {
       });
     }
     
-  function handleChange(e) {
-    setMessage(e.target.value);
-  }
+    function scrollToBottom() {
+      const chatWindow = document.getElementById("DbMsgs");
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
 
-  function handleChangeUsername(e) {
-    setUsername(e.target.value);
-  }
+    function handleChange(e) {
+      setMessage(e.target.value);
+    }
+
+    function handleChangeUsername(e) {
+      setUsername(e.target.value);
+    }
 
   return (
     //Send down the info, render the chat shit
@@ -88,8 +95,8 @@ const Data = () => {
           }
           return (
             <div key={index} style={{ justifyContent: 'flex-start' }} >
-              <div className="PartnerMessage" >
-                {message.body}
+              <div className="PartnerMessage" id='DbMsgs'>
+                {message.username}:  {message.body}
               </div>
             </div>
             )
@@ -103,16 +110,16 @@ const Data = () => {
                     value={message} 
                     onChange={handleChange} placeholder="Say something..." />
                     <button className="Button">
-                        Submit
                     </button>
                 </form>
             </span>
-            <span>
-              <form>
-              <input
+
+            <span className="UserEntry">
+              <form onSubmit={sendMessage}>
+                <input
                     value={username}
                     onChange={handleChangeUsername}
-                    placeholder="Your name" />
+                    placeholder="Your name..." />
               </form>
             </span>
         </React.Fragment>

@@ -28,8 +28,8 @@ const Data = () => {
       return res.json();
     }).then((resJSON) => {
       console.log(resJSON)
+      setMessages(resJSON.concat())
       console.log({messages})
-      scrollToBottom()
     }).catch((err) => {
       console.log(err);
     });

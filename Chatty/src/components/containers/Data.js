@@ -100,9 +100,9 @@ const Data = () => {
                 <form onSubmit={sendMessage}>
                     <input 
                     value={message} 
-                    onChange={handleChange} placeholder="Say something..." />
-                    <button className="Button">
-                    </button>
+                    onChange={handleChange} 
+                    placeholder="Say something..." />
+                    <button className="Button" />
                 </form>
             </span>
 

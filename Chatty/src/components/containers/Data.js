@@ -16,31 +16,33 @@ const Data = () => {
     socketRef.current = io.connect('/');   
     // Sets your ID on connection
     socketRef.current.on("your id", id => {
-      setYourID(id);
+      setYourID(id)
     })
     console.log("socket connection worked")
     socketRef.current.on("message", (message) => {
     recievedMessage(message);
     })
+    // Gets the messages from the database and sets my messages with them. Peep the concat.
     fetch("/api/messages", {
       method: "GET",
     }).then((res) => {
-      return res.json();
+      return res.json()
     }).then((resJSON) => {
       console.log(resJSON)
       setMessages(resJSON.concat())
       console.log({messages})
     }).catch((err) => {
-      console.log(err);
+      console.log(err)
     });
   }, []);
 
     function recievedMessage(message) {
-      setMessages(oldMsgs => [...oldMsgs, message]);
+      setMessages(oldMsgs => [...oldMsgs, message])
     }
       
     function sendMessage(e) {
       e.preventDefault();
+      // Props on this guy match up with the schema.
       const messageObject = {
           body: message,
           username: username,
@@ -48,7 +50,7 @@ const Data = () => {
     };
       setMessage("")
       socketRef.current.emit("send message", messageObject);
-      // this took so much for me to find. I big win for me.
+      // Sends the message to the database on submit. Uses the messageObject
       fetch("/api/messages", {
           method: "POST",
           headers: {

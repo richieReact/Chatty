@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
+import ScrollToBottom, { useScrollToBottom } from 'react-scroll-to-bottom';
 
 import './Data.css';
 
@@ -30,7 +31,6 @@ const Data = () => {
     }).then((resJSON) => {
       console.log(resJSON)
       setMessages(resJSON.concat())
-      console.log({messages})
     }).catch((err) => {
       console.log(err)
     });
@@ -76,26 +76,26 @@ const Data = () => {
     //Send down the info, render the chat shit
     <React.Fragment>
     <div className="Page">
-      <div className="Container">
+      <ScrollToBottom className="Container">
         {messages.map((message, index) => {
           if (message.id === yourID) {
             return (
               <div className="MyRow" key={index}>
-                <div className="MyMessage" >
+                <ScrollToBottom className="MyMessage" >
                   {message.body}
-                </div>
+                </ScrollToBottom>
               </div>
             )
           }
           return (
             <div key={index} style={{ justifyContent: 'flex-start' }} >
-              <div className="PartnerMessage" id="DbMsgs">
+              <ScrollToBottom className="PartnerMessage" id="DbMsgs">
                 {message.username}:  {message.body}
-              </div>
+              </ScrollToBottom>
             </div>
             )
           })}
-        </div>
+        </ScrollToBottom>
       </div>
 
             <span className="Entry">

@@ -4,22 +4,24 @@
     width: 100%;
     flex-direction: column;
     margin-right: 1em;
-    overflow: auto;
+    overflow-y: scroll;
+    transform: rotate(180deg);
 }
 
 .Container {
     display: flex;
     flex-direction: column;
-    height: 80%;
+    height: 90%;
     width: 85%;
     border: transparent;
     border-radius: 10px;
-    padding-bottom: 10px;
-    margin-top: 20px;
+    padding-bottom: 0px;
+    margin-top: 30px;
     margin-left: 5vh;
     overflow-y: scroll;
     overflow-x: hidden;
     overflow-anchor: bottom;
+    transform: rotate(180deg);
 }
 
 .Button {

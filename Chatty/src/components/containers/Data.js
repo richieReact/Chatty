@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
-import ScrollToBottom, { useScrollToBottom } from 'react-scroll-to-bottom';
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 import './Data.css';
 
@@ -22,6 +22,7 @@ const Data = () => {
     console.log("socket connection worked")
     socketRef.current.on("message", (message) => {
     recievedMessage(message);
+    console.log(message)
     })
     // Gets the messages from the database and sets my messages with them. Peep the concat.
     fetch("/api/messages", {
